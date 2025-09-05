@@ -3,9 +3,14 @@ on:
   pull_request:
     branches:
       - develop
+
 jobs:
   check-application:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ['1.23','1.24']
+        
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -13,7 +18,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.24
+          go-version: ${{ matrix.go-version }}
 
       - run: go test
       - run: go run math.go
