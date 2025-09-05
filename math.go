@@ -1,9 +1,9 @@
 package main
 
 func main() {
-	println(Add(2, 3))
+	println(add(2, 3))
 }
 
-func Add(a int, b int) int {
+func add(a int, b int) int {
 	return a + b
 }
